@@ -3,7 +3,7 @@ import {Directive, Input, OnDestroy, OnChanges, OnInit, SimpleChange} from '@ang
 import {ClusterManager} from '../services/managers/cluster-manager';
 import {MarkerManager} from '@agm/core';
 
-import {ClusterOptions, ClusterStyle} from '../services/google-clusterer-types';
+import {ClusterOptions, ClusterStyle, InfoWindowManager} from '../services/google-clusterer-types';
 
 /**
  * AgmMarkerCluster clusters map marker if they are near together
@@ -34,7 +34,7 @@ import {ClusterOptions, ClusterStyle} from '../services/google-clusterer-types';
  */
 @Directive({
   selector: 'agm-marker-cluster',
-  providers: [ClusterManager, {provide: MarkerManager, useExisting: ClusterManager}]
+  providers: [ClusterManager, {provide: MarkerManager, useExisting: ClusterManager}, InfoWindowManager]
 })
 export class AgmMarkerCluster implements OnDestroy, OnChanges, OnInit, ClusterOptions {
   /**
