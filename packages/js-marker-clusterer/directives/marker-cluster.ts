@@ -1,7 +1,7 @@
 import {Directive, Input, OnDestroy, OnChanges, OnInit, SimpleChange} from '@angular/core';
 
 import {ClusterManager} from '../services/managers/cluster-manager';
-import {MarkerManager} from '@agm/core';
+import {MarkerManager, InfoWindowManager} from '@agm/core';
 
 import {ClusterOptions, ClusterStyle, InfoWindowManager} from '../services/google-clusterer-types';
 
@@ -34,7 +34,13 @@ import {ClusterOptions, ClusterStyle, InfoWindowManager} from '../services/googl
  */
 @Directive({
   selector: 'agm-marker-cluster',
-  providers: [ClusterManager, {provide: MarkerManager, useExisting: ClusterManager}, InfoWindowManager]
+
+  providers: [
+    ClusterManager,
+    {provide: MarkerManager, useExisting: ClusterManager},
+    InfoWindowManager,
+  ]
+
 })
 export class AgmMarkerCluster implements OnDestroy, OnChanges, OnInit, ClusterOptions {
   /**
